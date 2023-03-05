@@ -8,6 +8,7 @@ const playersRouter = require('./router/playersRouter');
 
 app.use(
   cors({
+    origin: 'http://localhost:3000',
     methods: ['GET', 'POST', 'PATCH', 'DELETE'],
   })
 );

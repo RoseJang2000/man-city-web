@@ -1,5 +1,13 @@
+import HomeTitle from 'components/Home/HomeTitle';
+import Trophies from 'components/Home/Trophies';
+
 const Home = () => {
-  return <div></div>;
+  return (
+    <>
+      <HomeTitle />
+      <Trophies />
+    </>
+  );
 };
 
 export default Home;

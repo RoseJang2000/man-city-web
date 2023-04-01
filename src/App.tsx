@@ -1,11 +1,12 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Home, Players } from "pages";
 import GlobalStyle from "styles/GlobalStyle";
 import styled from "styled-components";
-import { useState } from "react";
-import NavMenu from "components/NavMenu";
+import { useEffect, useState } from "react";
+import NavMenu from "components/Nav/NavMenu";
 
 const App = () => {
+  const path = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [aniMode, setAniMode] = useState<boolean>(false);
 
@@ -14,10 +15,18 @@ const App = () => {
       setIsMenuOpen(true);
       setAniMode(true);
     } else {
-      setAniMode(false);
-      setTimeout(() => setIsMenuOpen(false), 300);
+      handleCloseMenu();
     }
   };
+
+  const handleCloseMenu = () => {
+    setAniMode(false);
+    setTimeout(() => setIsMenuOpen(false), 300);
+  };
+
+  useEffect(() => {
+    handleCloseMenu();
+  }, [path]);
 
   return (
     <>
@@ -32,7 +41,7 @@ const App = () => {
       </MenuButton>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/players" element={<Players />} />
+        <Route path="/players/:type" element={<Players />} />
       </Routes>
     </>
   );

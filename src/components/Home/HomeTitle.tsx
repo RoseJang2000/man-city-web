@@ -1,10 +1,13 @@
-import styled, { css, keyframes } from "styled-components";
+import { useWindowWidth } from "hooks/useWindowWidth";
+import styled, { keyframes } from "styled-components";
 
 const HomeTitle = () => {
+  const windowWidth = useWindowWidth();
+
   return (
     <HomeTitleWrapper>
-      <h1>Welcome, </h1>
-      <OpenCloseText>
+      <div className="text-head">Welcome, </div>
+      <OpenCloseText width={windowWidth}>
         <div className="word1">blues!</div>
         <div className="word2">citizens!</div>
       </OpenCloseText>
@@ -24,13 +27,22 @@ const HomeTitleWrapper = styled.section`
   position: relative;
   width: 38rem;
 
-  h1 {
-    font-size: 3rem;
+  .text-head {
     margin-left: 2.2rem;
+    font-weight: 800;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 33rem;
+    font-size: 2.7rem;
+  }
+  @media screen and (max-width: 576px) {
+    width: 30rem;
+    font-size: 2.3rem;
   }
 `;
 
-const OpenClose = keyframes`
+const OpenClose = (width: number) => keyframes`
     0% {
       top: 0;
       width: 0;
@@ -54,19 +66,19 @@ const OpenClose = keyframes`
       width: 0;
     }
     60% {
-      top: -4.5rem;
+      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-3.5rem"};
       width: 0;
     }
     70% {
-      top: -4.5rem;
+      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-3.5rem"};;
       width: 20rem;
     }
     80% {
-      top: -4.5rem;
+      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-3.5rem"};;
       width: 20rem;
     }
     90% {
-      top: -4.5rem;
+      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-3.5rem"};;
       width: 0;
     }
     100% {
@@ -75,7 +87,7 @@ const OpenClose = keyframes`
     }
 `;
 
-const OpenCloseText = styled.div`
+const OpenCloseText = styled.div<{ width: number }>`
   background-color: #3bd6ff;
   color: #333;
   display: block;
@@ -85,9 +97,12 @@ const OpenCloseText = styled.div`
   padding-left: 0.5rem;
   top: 0rem;
   left: 20rem;
-  animation: ${css`
-    ${OpenClose} 4s ease-in-out infinite
-  `};
+  animation: ${(props) => OpenClose(props.width)} 4s ease-in-out infinite;
+  @media screen and (max-width: 992px) {
+    left: 18rem;
+  }
+  @media screen and (max-width: 576px) {
+  }
 `;
 
 export default HomeTitle;

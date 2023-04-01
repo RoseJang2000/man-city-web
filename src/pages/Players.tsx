@@ -25,6 +25,7 @@ const Players = () => {
     ...playersData,
     ...playersData.slice(0, 2),
   ];
+  const dataCount: number = playersDataForSlide.length;
   const [isCardFlip, setIsCardFlip] = useState<boolean>(false);
   const [activeIdx, setActiveIdx] = useState<number>(2);
   const [showIdx, setShowIdx] = useState<number>(1);
@@ -47,20 +48,24 @@ const Players = () => {
     setSlidetransition(`${transitionTime}ms`);
     if (activeIdx === 2) {
       setActiveIdx(1);
-      replaceSlide(playersDataForSlide.length - 3);
+      setShowIdx(playersCount);
+      replaceSlide(dataCount - 3);
     } else {
       setActiveIdx((current) => current - 1);
+      setShowIdx((current) => current - 1);
     }
   };
 
   const handleNextClick = () => {
     setIsCardFlip(false);
     setSlidetransition(`${transitionTime}ms`);
-    if (activeIdx === playersDataForSlide.length - 3) {
-      setActiveIdx(playersDataForSlide.length - 2);
+    if (activeIdx === dataCount - 3) {
+      setActiveIdx(dataCount - 2);
+      setShowIdx(1);
       replaceSlide(2);
     } else {
       setActiveIdx((current) => current + 1);
+      setShowIdx((current) => current + 1);
     }
   };
 
@@ -72,8 +77,10 @@ const Players = () => {
 
   return (
     <PlayersContainer>
-      <h1 className="title">{position}</h1>
-      <h2 className="count">{`${activeIdx} / ${showIdx} / ${playersCount}`}</h2>
+      <div className="title">
+        <h1 className="title-position">{position}</h1>
+        <h2 className="title-count">{`${showIdx} / ${playersCount}`}</h2>
+      </div>
       <CardWrapper>
         <div
           className="flex-box"
@@ -93,7 +100,6 @@ const Players = () => {
               >
                 <div className="front">
                   <h1 className="player-number">{player.number}</h1>
-                  {index},{playersDataForSlide.length}
                 </div>
                 <div className="back">
                   <h1 className="player-name">{player.name}</h1>
@@ -111,11 +117,7 @@ const Players = () => {
       </div>
       <div
         className="btnNext"
-        onClick={
-          activeIdx < playersDataForSlide.length - 2
-            ? handleNextClick
-            : undefined
-        }
+        onClick={activeIdx < dataCount - 2 ? handleNextClick : undefined}
       >
         <span>NEXT PLAYER</span>
       </div>

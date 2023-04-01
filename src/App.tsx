@@ -23,34 +23,20 @@ const App = () => {
     <>
       <GlobalStyle />
       {isMenuOpen && <NavMenu aniMode={aniMode} />}
-      <Main>
-        <MenuButton onClick={handleToggleMenu}>
-          <div className={`menu-trigger ${isMenuOpen ? "active" : null}`}>
-            <span className="line line-1"></span>
-            <span className="line line-2"></span>
-            <span className="line line-3"></span>
-          </div>
-        </MenuButton>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/players" element={<Players />} />
-        </Routes>
-      </Main>
+      <MenuButton onClick={handleToggleMenu}>
+        <div className={`menu-trigger ${isMenuOpen ? "active" : null}`}>
+          <span className="line line-1"></span>
+          <span className="line line-2"></span>
+          <span className="line line-3"></span>
+        </div>
+      </MenuButton>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/players" element={<Players />} />
+      </Routes>
     </>
   );
 };
-
-const Main = styled.main`
-  width: 100%;
-  height: 100vh;
-  background-color: #001838;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 5rem;
-`;
 
 const MenuButton = styled.div`
   position: fixed;

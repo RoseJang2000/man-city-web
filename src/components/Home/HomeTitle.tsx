@@ -28,17 +28,16 @@ const HomeTitleWrapper = styled.section`
   width: 38rem;
 
   .text-head {
-    margin-left: 2.2rem;
     font-weight: 800;
   }
 
   @media screen and (max-width: 992px) {
-    width: 33rem;
+    width: 30rem;
     font-size: 2.7rem;
   }
   @media screen and (max-width: 576px) {
-    width: 30rem;
-    font-size: 2.3rem;
+    width: 18rem;
+    font-size: 1.6rem;
   }
 `;
 
@@ -66,19 +65,19 @@ const OpenClose = (width: number) => keyframes`
       width: 0;
     }
     60% {
-      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-3.5rem"};
+      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-2.4rem"};
       width: 0;
     }
     70% {
-      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-3.5rem"};;
+      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-2.4rem"};;
       width: 20rem;
     }
     80% {
-      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-3.5rem"};;
+      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-2.4rem"};;
       width: 20rem;
     }
     90% {
-      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-3.5rem"};;
+      top: ${width >= 992 ? "-4.3rem" : width >= 576 ? "-4rem" : "-2.4rem"};;
       width: 0;
     }
     100% {
@@ -96,12 +95,13 @@ const OpenCloseText = styled.div<{ width: number }>`
   position: absolute;
   padding-left: 0.5rem;
   top: 0rem;
-  left: 20rem;
+  left: 18rem;
   animation: ${(props) => OpenClose(props.width)} 4s ease-in-out infinite;
   @media screen and (max-width: 992px) {
-    left: 18rem;
+    left: 16rem;
   }
   @media screen and (max-width: 576px) {
+    left: 9rem;
   }
 `;
 

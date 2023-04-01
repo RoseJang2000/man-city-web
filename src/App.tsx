@@ -3,7 +3,7 @@ import { Home, Players } from "pages";
 import GlobalStyle from "styles/GlobalStyle";
 import styled from "styled-components";
 import { useState } from "react";
-import NavMenu from "components/NavMenu";
+import NavMenu from "components/Nav/NavMenu";
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);

@@ -4,8 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useWindowWidth } from "hooks/useWindowWidth";
 
 const NavMenu = ({ aniMode }: { aniMode: boolean }) => {
-  const [menuRender, setMenuRender] = useState<boolean>(aniMode);
   const windowWidth = useWindowWidth();
+  const [menuRender, setMenuRender] = useState<boolean>(aniMode);
+  const [isShowPlayerMenu, setIsShowPlayerMenu] = useState<boolean>(false);
 
   useEffect(() => {
     if (aniMode) setMenuRender(true);

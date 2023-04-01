@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import { Main } from "styles/Main";
 import playerList from "assets/playerList.json";
+import { useEffect, useRef, useState } from "react";
 
 interface Player {
   name: string;
@@ -72,6 +72,7 @@ const Players = () => {
   useEffect(() => {
     setSlidetransition("");
     setIsCardFlip(false);
+    setShowIdx(1);
     setActiveIdx(2);
   }, [position]);
 
@@ -91,7 +92,7 @@ const Players = () => {
         >
           {playersDataForSlide.map((player, index) => (
             <PlayerCard
-              key={index}
+              key={`${position}${index}`}
               className={activeIdx === index ? "active" : undefined}
               onClick={handleToggleFlip}
             >
@@ -109,21 +110,35 @@ const Players = () => {
           ))}
         </div>
       </CardWrapper>
-      <div
-        className="btnPrev"
+      <ArrowButton
+        isPrev={true}
         onClick={activeIdx > 1 ? handlePrevClick : undefined}
       >
         <span>PREV PLAYER</span>
-      </div>
-      <div
-        className="btnNext"
+      </ArrowButton>
+      <ArrowButton
+        isPrev={false}
         onClick={activeIdx < dataCount - 2 ? handleNextClick : undefined}
       >
         <span>NEXT PLAYER</span>
-      </div>
+      </ArrowButton>
     </PlayersContainer>
   );
 };
+
+const PlayersContainer = styled(Main)`
+  padding: 5rem;
+  overflow: hidden;
+  gap: 4rem;
+
+  .title {
+    text-align: center;
+  }
+  .title-position {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+`;
 
 const CardWrapper = styled.section`
   width: 18rem;
@@ -132,126 +147,6 @@ const CardWrapper = styled.section`
     width: fit-content;
     display: flex;
     gap: 14rem;
-  }
-`;
-
-const PlayersContainer = styled(Main)`
-  padding: 5rem;
-  overflow: hidden;
-  gap: 4rem;
-  .title {
-    text-transform: uppercase;
-  }
-
-  .btnPrev {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-16rem, -50%);
-    display: flex;
-    align-items: center;
-    text-align: left;
-    cursor: pointer;
-  }
-  .btnPrev span {
-    font: 1rem;
-    color: #fff;
-    opacity: 1;
-    transform: translateX(30%);
-    transition: 0.5s;
-  }
-  .btnPrev::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: #fff;
-    position: absolute;
-    top: 50%;
-    left: 0px;
-    transform-origin: left center;
-    transform: rotate(-180deg);
-    transition: 0.5s;
-  }
-  .btnPrev::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: #fff;
-    position: absolute;
-    bottom: 50%;
-    left: 0px;
-    transform-origin: left center;
-    transform: rotate(180deg);
-    transition: 0.5s;
-  }
-  .btnPrev:hover span {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  .btnPrev:hover::before {
-    transform: rotate(-30deg);
-  }
-  .btnPrev:hover::after {
-    transform: rotate(30deg);
-  }
-  .btnNext {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(16rem, -50%);
-    display: flex;
-    align-items: center;
-    text-align: right;
-    cursor: pointer;
-  }
-  .btnNext span {
-    font: 1rem;
-    color: #fff;
-    opacity: 1;
-    transform: translateX(-30%);
-    transition: 0.5s;
-  }
-  .btnNext::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: #fff;
-    position: absolute;
-    top: 50%;
-    left: 0px;
-    transform-origin: right center;
-    transform: rotate(180deg);
-    transition: 0.5s;
-  }
-  .btnNext::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: #fff;
-    position: absolute;
-    bottom: 50%;
-    left: 0px;
-    transform-origin: right center;
-    transform: rotate(-180deg);
-    transition: 0.5s;
-  }
-  .btnNext:hover span {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-  .btnNext:hover::before {
-    transform: rotate(30deg);
-  }
-  .btnNext:hover::after {
-    transform: rotate(-30deg);
   }
 `;
 
@@ -308,6 +203,59 @@ const PlayerCard = styled.article`
   }
   &.active .show-back {
     transform: rotateY(180deg);
+  }
+`;
+
+const ArrowButton = styled.div<{ isPrev: boolean }>`
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 58%;
+  transform: translate(${(props) => (props.isPrev ? "-14rem" : "14rem")}, -50%);
+  display: flex;
+  align-items: center;
+  text-align: ${(props) => (props.isPrev ? "left" : "right")};
+  cursor: pointer;
+
+  span {
+    font: 1rem;
+    color: #fff;
+    opacity: 1;
+    transform: translateX(${(props) => (props.isPrev ? "30%" : "-30%")});
+    transition: 0.5s;
+  }
+  ::before,
+  ::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    position: absolute;
+    transition: 0.5s;
+    transform-origin: ${(props) => (props.isPrev ? "left" : "right")} center;
+  }
+  ::before {
+    top: 50%;
+    left: 0px;
+    transform: rotate(${(props) => (props.isPrev ? "-180deg" : "180deg")});
+  }
+  ::after {
+    bottom: 50%;
+    left: 0px;
+    transform: rotate(${(props) => (props.isPrev ? "180deg" : "-180deg")});
+  }
+  :hover {
+    span {
+      opacity: 0;
+      transform: translateX(${(props) => (props.isPrev ? "100%" : "-100%")});
+    }
+    ::before {
+      transform: rotate(${(props) => (props.isPrev ? "-30deg" : "30deg")});
+    }
+    ::after {
+      transform: rotate(${(props) => (props.isPrev ? "30deg" : "-30deg")});
+    }
   }
 `;
 

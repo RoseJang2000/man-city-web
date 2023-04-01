@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from "styled-components";
 
 const HomeTitle = () => {
   return (
     <HomeTitleWrapper>
       <h1>Welcome, </h1>
-      <div className="message">
+      <OpenCloseText>
         <div className="word1">blues!</div>
         <div className="word2">citizens!</div>
-      </div>
+      </OpenCloseText>
     </HomeTitleWrapper>
   );
 };
@@ -28,21 +28,9 @@ const HomeTitleWrapper = styled.section`
     font-size: 3rem;
     margin-left: 2.2rem;
   }
+`;
 
-  .message {
-    background-color: #3bd6ff;
-    color: #333;
-    display: block;
-    font-weight: 900;
-    overflow: hidden;
-    position: absolute;
-    padding-left: 0.5rem;
-    top: 0rem;
-    left: 20rem;
-    animation: openclose 4s ease-in-out infinite;
-  }
-
-  @keyframes openclose {
+const OpenClose = keyframes`
     0% {
       top: 0;
       width: 0;
@@ -85,7 +73,21 @@ const HomeTitleWrapper = styled.section`
       width: 0;
       text-indent: 0;
     }
-  }
+`;
+
+const OpenCloseText = styled.div`
+  background-color: #3bd6ff;
+  color: #333;
+  display: block;
+  font-weight: 900;
+  overflow: hidden;
+  position: absolute;
+  padding-left: 0.5rem;
+  top: 0rem;
+  left: 20rem;
+  animation: ${css`
+    ${OpenClose} 4s ease-in-out infinite
+  `};
 `;
 
 export default HomeTitle;

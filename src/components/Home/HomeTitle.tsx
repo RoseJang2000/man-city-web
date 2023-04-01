@@ -23,7 +23,6 @@ const HomeTitleWrapper = styled.section`
   overflow: hidden;
   position: relative;
   width: 38rem;
-  font-family: tahoma;
 
   h1 {
     font-size: 3rem;

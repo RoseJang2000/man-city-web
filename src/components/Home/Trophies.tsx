@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import { GoX } from 'react-icons/go';
-import cityTrophies from 'assets/trophies.json';
-import PremierLeague from 'assets/icons/premierLeague.svg';
-import FACup from 'assets/icons/faCup.svg';
-import CarabaoCup from 'assets/icons/leagueCup.svg';
-import CommunityShield from 'assets/icons/communityShield.svg';
+import styled from "styled-components";
+import { GoX } from "react-icons/go";
+import cityTrophies from "assets/trophies.json";
+import PremierLeague from "assets/icons/premierLeague.svg";
+import FACup from "assets/icons/faCup.svg";
+import CarabaoCup from "assets/icons/leagueCup.svg";
+import CommunityShield from "assets/icons/communityShield.svg";
 
 interface Trophy {
   cupName: string;
@@ -16,9 +16,9 @@ const Trophies = () => {
   const trophieDatas: Trophy[] = cityTrophies;
 
   const getCupIcon = (cupName: string) => {
-    if (cupName === 'Premier League') return PremierLeague;
-    else if (cupName === 'FA Cup') return FACup;
-    else if (cupName === 'Carabao Cup') return CarabaoCup;
+    if (cupName === "Premier League") return PremierLeague;
+    else if (cupName === "FA Cup") return FACup;
+    else if (cupName === "Carabao Cup") return CarabaoCup;
     else return CommunityShield;
   };
 
@@ -73,6 +73,24 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
+    transition: 0.3s;
+  }
+
+  @media screen and (max-width: 992px) {
+    .articles {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width: 576px) {
+    padding: 1rem;
+    .title {
+      font-size: 1.5rem;
+      top: -1rem;
+    }
+    .articles {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem;
+    }
   }
 `;
 
@@ -103,10 +121,28 @@ const TrophieArticle = styled.div`
   .cup-winning-desc {
     font-size: 1.3rem;
     text-align: center;
-    font-family: 'orbitron';
   }
   .cup-winning-name {
     font-weight: 700;
+  }
+
+  @media screen and (max-width: 992px) {
+    .cup-winning-logo {
+      width: 30%;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    flex-direction: row;
+    .cup-winning-logo {
+      width: 40%;
+    }
+    .cup-winning-count {
+      font-size: 2rem;
+    }
+    .cup-winning-desc {
+      font-size: 1.1rem;
+      text-align: left;
+    }
   }
 `;
 

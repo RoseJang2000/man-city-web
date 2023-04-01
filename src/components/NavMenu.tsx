@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import { useEffect, useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 
 const NavMenu = ({ aniMode }: { aniMode: boolean }) => {
   const [menuRender, setMenuRender] = useState<boolean>(aniMode);
@@ -47,7 +47,7 @@ const SlideOut = keyframes`
 const NavContainer = styled.nav<{ aniMode: boolean }>`
   width: 40%;
   height: 100%;
-  background-color: #fefefe;
+  background-color: #000f23;
   position: fixed;
   top: 0;
   left: 0;

@@ -1,9 +1,11 @@
+import styled, { css, keyframes } from "styled-components";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import styled, { css, keyframes } from "styled-components";
+import { useWindowWidth } from "hooks/useWindowWidth";
 
 const NavMenu = ({ aniMode }: { aniMode: boolean }) => {
   const [menuRender, setMenuRender] = useState<boolean>(aniMode);
+  const windowWidth = useWindowWidth();
 
   useEffect(() => {
     if (aniMode) setMenuRender(true);
@@ -13,7 +15,7 @@ const NavMenu = ({ aniMode }: { aniMode: boolean }) => {
     <>
       <NavBg></NavBg>
       {menuRender && (
-        <NavContainer aniMode={aniMode}>
+        <NavContainer aniMode={aniMode} width={windowWidth}>
           <div className="nav-list-wrapper">
             <NavList>
               <NavLink to="/">home</NavLink>
@@ -39,26 +41,27 @@ const NavBg = styled.div`
   z-index: 2;
 `;
 
-const SlideIn = keyframes`
+const SlideIn = (width: number) => keyframes`
   from {
-    left: -40vw;
+    left: ${width >= 992 ? "-30%" : width >= 576 ? "-40%" : "-45%"};
   }
   to {
     left: 0;
   }
 `;
 
-const SlideOut = keyframes`
+const SlideOut = (width: number) => keyframes`
   from {
     left: 0;
   }
   to {
-    left: -40vw;
+    left: ${width >= 992 ? "-30%" : width >= 576 ? "-40%" : "-45%"};
   }
 `;
 
-const NavContainer = styled.nav<{ aniMode: boolean }>`
-  width: 40%;
+const NavContainer = styled.nav<{ aniMode: boolean; width: number }>`
+  width: ${(props) =>
+    props.width >= 992 ? "30%" : props.width >= 576 ? "40%" : "45%"};
   height: 100%;
   background-color: #000f23;
   display: flex;
@@ -73,10 +76,10 @@ const NavContainer = styled.nav<{ aniMode: boolean }>`
   animation: ${(props) =>
     props.aniMode
       ? css`
-          ${SlideIn} ease-in-out 0.3s
+          ${SlideIn(props.width)} ease-in-out 0.3s
         `
       : css`
-          ${SlideOut} ease-in-out 0.3s
+          ${SlideOut(props.width)} ease-in-out 0.3s
         `};
 
   .nav-list-wrapper {

@@ -7,6 +7,17 @@ const NavMenu = ({ aniMode }: { aniMode: boolean }) => {
   const windowWidth = useWindowWidth();
   const [menuRender, setMenuRender] = useState<boolean>(aniMode);
   const [isShowPlayerMenu, setIsShowPlayerMenu] = useState<boolean>(false);
+  const [playerMenuAniMode, setPlayerMenuAniMode] = useState<boolean>(false);
+
+  const handleToggleInnerMenu = () => {
+    if (isShowPlayerMenu) {
+      setPlayerMenuAniMode(false);
+      setTimeout(() => setIsShowPlayerMenu(false), 200);
+    } else {
+      setIsShowPlayerMenu(true);
+      setPlayerMenuAniMode(true);
+    }
+  };
 
   useEffect(() => {
     if (aniMode) setMenuRender(true);
@@ -18,13 +29,25 @@ const NavMenu = ({ aniMode }: { aniMode: boolean }) => {
       {menuRender && (
         <NavContainer aniMode={aniMode} width={windowWidth}>
           <div className="nav-list-wrapper">
-            <NavList>
-              <NavLink to="/">home</NavLink>
-            </NavList>
-            <NavList>players</NavList>
-            <NavList>
-              <NavLink to="news">news</NavLink>
-            </NavList>
+            <StyledLink to="/">home</StyledLink>
+            <PlayersMenu onClick={handleToggleInnerMenu}>
+              <span
+                className={
+                  isShowPlayerMenu ? "players-text open" : "players-text"
+                }
+              >
+                players
+              </span>
+              {isShowPlayerMenu && (
+                <InnerMenu aniMode={playerMenuAniMode}>
+                  <NavLink to={"players/fw"}>Forwards</NavLink>
+                  <NavLink to={"players/mf"}>Midfielders</NavLink>
+                  <NavLink to={"players/df"}>Defenders</NavLink>
+                  <NavLink to={"players/gk"}>Goalkeepers</NavLink>
+                </InnerMenu>
+              )}
+            </PlayersMenu>
+            <StyledLink to="news">news</StyledLink>
           </div>
         </NavContainer>
       )}
@@ -42,7 +65,7 @@ const NavBg = styled.div`
   z-index: 2;
 `;
 
-const SlideIn = (width: number) => keyframes`
+const slideIn = (width: number) => keyframes`
   from {
     left: ${width >= 992 ? "-30%" : width >= 576 ? "-40%" : "-45%"};
   }
@@ -51,7 +74,7 @@ const SlideIn = (width: number) => keyframes`
   }
 `;
 
-const SlideOut = (width: number) => keyframes`
+const slideOut = (width: number) => keyframes`
   from {
     left: 0;
   }
@@ -77,10 +100,10 @@ const NavContainer = styled.nav<{ aniMode: boolean; width: number }>`
   animation: ${(props) =>
     props.aniMode
       ? css`
-          ${SlideIn(props.width)} ease-in-out 0.3s
+          ${slideIn(props.width)} ease-in-out 0.3s
         `
       : css`
-          ${SlideOut(props.width)} ease-in-out 0.3s
+          ${slideOut(props.width)} ease-in-out 0.3s
         `};
 
   .nav-list-wrapper {
@@ -88,18 +111,97 @@ const NavContainer = styled.nav<{ aniMode: boolean; width: number }>`
     width: 100%;
     flex-direction: column;
     gap: 2rem;
+    transition: 0.3s;
   }
 `;
 
-const NavList = styled.div`
-  a {
-    text-decoration: none;
-    color: #fff;
+const StyledLink = styled(NavLink)`
+  font-size: 2rem;
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: 0.3s;
+
+  :hover {
+    opacity: 1;
   }
+`;
+
+const PlayersMenu = styled.div`
   color: #fff;
   font-size: 2rem;
   text-transform: uppercase;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  .players-text {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.3s;
+    :hover,
+    &.open {
+      opacity: 1;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    opacity: 0.7;
+    :hover {
+      opacity: 1;
+    }
+  }
+`;
+
+const accordionOpen = keyframes`
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+    height: 4rem;
+  }
+  100% {
+    height: 8rem;
+    opacity: 1;
+  }
+`;
+const accordionClose = keyframes`
+  0% {
+    height: 8rem;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+    height: 4rem;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+  }
+`;
+
+const InnerMenu = styled.div<{ aniMode: boolean }>`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 8rem;
+  overflow: hidden;
+  padding: 0.5rem 0 0 0.5rem;
+  gap: 0.5rem;
+  transition: 0.3s;
+  animation: ${(props) =>
+    props.aniMode
+      ? css`
+          ${accordionOpen} linear 0.2s
+        `
+      : css`
+          ${accordionClose} linear 0.2s
+        `};
 `;
 
 export default NavMenu;

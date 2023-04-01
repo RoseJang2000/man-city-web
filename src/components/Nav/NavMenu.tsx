@@ -67,7 +67,7 @@ const NavBg = styled.div`
 
 const slideIn = (width: number) => keyframes`
   from {
-    left: ${width >= 992 ? "-30%" : width >= 576 ? "-40%" : "-45%"};
+    left: ${width >= 992 ? "-30%" : width >= 576 ? "-40%" : "-65%"};
   }
   to {
     left: 0;
@@ -79,13 +79,13 @@ const slideOut = (width: number) => keyframes`
     left: 0;
   }
   to {
-    left: ${width >= 992 ? "-30%" : width >= 576 ? "-40%" : "-45%"};
+    left: ${width >= 992 ? "-30%" : width >= 576 ? "-40%" : "-65%"};
   }
 `;
 
 const NavContainer = styled.nav<{ aniMode: boolean; width: number }>`
   width: ${(props) =>
-    props.width >= 992 ? "30%" : props.width >= 576 ? "40%" : "45%"};
+    props.width >= 992 ? "30%" : props.width >= 576 ? "40%" : "65%"};
   height: 100%;
   background-color: #000f23;
   display: flex;
@@ -163,21 +163,21 @@ const accordionOpen = keyframes`
   }
   50% {
     opacity: 0.5;
-    height: 4rem;
+    height: 4.5rem;
   }
   100% {
-    height: 8rem;
+    height: 9rem;
     opacity: 1;
   }
 `;
 const accordionClose = keyframes`
   0% {
-    height: 8rem;
+    height: 9rem;
     opacity: 1;
   }
   50% {
     opacity: 0.5;
-    height: 4rem;
+    height: 4.5rem;
   }
   100% {
     height: 0;
@@ -189,10 +189,10 @@ const InnerMenu = styled.div<{ aniMode: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 8rem;
+  height: 9rem;
   overflow: hidden;
-  padding: 0.5rem 0 0 0.5rem;
-  gap: 0.5rem;
+  padding: 0.8rem 0 0 0.5rem;
+  gap: 0.8rem;
   transition: 0.3s;
   animation: ${(props) =>
     props.aniMode

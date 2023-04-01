@@ -41,7 +41,7 @@ const App = () => {
       </MenuButton>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/players/:type" element={<Players />} />
+        <Route path="/players/:position" element={<Players />} />
       </Routes>
     </>
   );

@@ -17,7 +17,6 @@ const HomeTitle = () => {
 
 const HomeTitleWrapper = styled.section`
   color: #fff;
-  font-family: tahoma;
   font-size: 3rem;
   font-weight: 100;
   line-height: 1.5;

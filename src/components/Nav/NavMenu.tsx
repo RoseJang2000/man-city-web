@@ -40,10 +40,10 @@ const NavMenu = ({ aniMode }: { aniMode: boolean }) => {
               </span>
               {isShowPlayerMenu && (
                 <InnerMenu aniMode={playerMenuAniMode}>
-                  <NavLink to={"players/fw"}>Forwards</NavLink>
-                  <NavLink to={"players/mf"}>Midfielders</NavLink>
-                  <NavLink to={"players/df"}>Defenders</NavLink>
-                  <NavLink to={"players/gk"}>Goalkeepers</NavLink>
+                  <NavLink to={"players/forwards"}>Forwards</NavLink>
+                  <NavLink to={"players/midfielders"}>Midfielders</NavLink>
+                  <NavLink to={"players/defenders"}>Defenders</NavLink>
+                  <NavLink to={"players/goalkeepers"}>Goalkeepers</NavLink>
                 </InnerMenu>
               )}
             </PlayersMenu>

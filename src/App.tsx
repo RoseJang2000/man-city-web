@@ -1,9 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
-import { Home, Players } from 'pages';
-import GlobalStyle from 'styles/GlobalStyle';
-import styled from 'styled-components';
-import { useState } from 'react';
-import NavMenu from 'components/NavMenu';
+import { Route, Routes } from "react-router-dom";
+import { Home, Players } from "pages";
+import GlobalStyle from "styles/GlobalStyle";
+import styled from "styled-components";
+import { useState } from "react";
+import NavMenu from "components/NavMenu";
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -23,34 +23,20 @@ const App = () => {
     <>
       <GlobalStyle />
       {isMenuOpen && <NavMenu aniMode={aniMode} />}
-      <Main>
-        <MenuButton onClick={handleToggleMenu}>
-          <div className={`menu-trigger ${isMenuOpen ? 'active' : null}`}>
-            <span className="line line-1"></span>
-            <span className="line line-2"></span>
-            <span className="line line-3"></span>
-          </div>
-        </MenuButton>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/players" element={<Players />} />
-        </Routes>
-      </Main>
+      <MenuButton onClick={handleToggleMenu}>
+        <div className={`menu-trigger ${isMenuOpen ? "active" : null}`}>
+          <span className="line line-1"></span>
+          <span className="line line-2"></span>
+          <span className="line line-3"></span>
+        </div>
+      </MenuButton>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/players" element={<Players />} />
+      </Routes>
     </>
   );
 };
-
-const Main = styled.main`
-  width: 100%;
-  height: 100vh;
-  background-color: #001838;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 5rem;
-`;
 
 const MenuButton = styled.div`
   position: fixed;
@@ -59,7 +45,7 @@ const MenuButton = styled.div`
   top: 2rem;
   left: 2rem;
   cursor: pointer;
-  z-index: 1999;
+  z-index: 20;
 
   .menu-trigger {
     position: relative;
@@ -88,7 +74,6 @@ const MenuButton = styled.div`
   .menu-trigger.active .line-1 {
     -webkit-transform: translateY(0.9rem) rotate (-45deg);
     transform: translateY(0.9rem) rotate(-45deg);
-    background-color: #001838;
   }
   .menu-trigger.active .line-2 {
     opacity: 0;
@@ -96,7 +81,6 @@ const MenuButton = styled.div`
   .menu-trigger.active .line-3 {
     -webkit-transform: translateY(-0.9rem) rotate(45deg);
     transform: translateY(-0.9rem) rotate(45deg);
-    background-color: #001838;
   }
 `;
 

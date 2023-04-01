@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 import { Main } from "styles/Main";
 import playerList from "assets/playerList.json";
-import { useEffect, useRef, useState } from "react";
 
 interface Player {
   name: string;
@@ -19,17 +19,16 @@ const Players = () => {
   const { position } = useParams();
   const playersData: Player[] = playerList[position as keyof object];
   const playersCount: number = playersData.length;
-  const transitionTime: number = 500;
+  const transitionTime: number = 300;
   const playersDataForSlide = [
     ...playersData.slice(-2),
     ...playersData,
     ...playersData.slice(0, 2),
   ];
   const [isCardFlip, setIsCardFlip] = useState<boolean>(false);
-  const [activeIdx, setActiveIdx] = useState<number>(0);
-  const [slideTransition, setSlidetransition] = useState<string>(
-    `${transitionTime}ms`
-  );
+  const [activeIdx, setActiveIdx] = useState<number>(2);
+  const [showIdx, setShowIdx] = useState<number>(1);
+  const [slideTransition, setSlidetransition] = useState<string>("");
 
   const handleToggleFlip = () => {
     console.log(!isCardFlip, activeIdx);
@@ -48,7 +47,7 @@ const Players = () => {
     setSlidetransition(`${transitionTime}ms`);
     if (activeIdx === 2) {
       setActiveIdx(1);
-      replaceSlide(4);
+      replaceSlide(playersDataForSlide.length - 3);
     } else {
       setActiveIdx((current) => current - 1);
     }
@@ -57,18 +56,24 @@ const Players = () => {
   const handleNextClick = () => {
     setIsCardFlip(false);
     setSlidetransition(`${transitionTime}ms`);
-    if (activeIdx === 4) {
-      setActiveIdx(5);
+    if (activeIdx === playersDataForSlide.length - 3) {
+      setActiveIdx(playersDataForSlide.length - 2);
       replaceSlide(2);
     } else {
       setActiveIdx((current) => current + 1);
     }
   };
 
+  useEffect(() => {
+    setSlidetransition("");
+    setIsCardFlip(false);
+    setActiveIdx(2);
+  }, [position]);
+
   return (
     <PlayersContainer>
       <h1 className="title">{position}</h1>
-      <h2 className="count">{`${activeIdx} / ${playersCount}`}</h2>
+      <h2 className="count">{`${activeIdx} / ${showIdx} / ${playersCount}`}</h2>
       <CardWrapper>
         <div
           className="flex-box"
@@ -100,13 +105,17 @@ const Players = () => {
       </CardWrapper>
       <div
         className="btnPrev"
-        onClick={activeIdx > 2 ? handlePrevClick : undefined}
+        onClick={activeIdx > 1 ? handlePrevClick : undefined}
       >
         <span>PREV PLAYER</span>
       </div>
       <div
         className="btnNext"
-        onClick={activeIdx < 5 ? handleNextClick : undefined}
+        onClick={
+          activeIdx < playersDataForSlide.length - 2
+            ? handleNextClick
+            : undefined
+        }
       >
         <span>NEXT PLAYER</span>
       </div>

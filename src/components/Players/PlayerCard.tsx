@@ -22,7 +22,7 @@ const PlayerCard = ({
       onClick={activeIdx === index ? handleToggleFlip : undefined}
     >
       <div className={!isCardFlip ? "inner show-front" : "inner show-back"}>
-        <CardFront>
+        <CardFront className="card-front">
           <h1 className="player-number">{player.number}</h1>
         </CardFront>
         <CardBack>
@@ -70,11 +70,33 @@ const CardWrapper = styled.article`
     opacity: 1;
     cursor: pointer;
   }
+  &.active section {
+    box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.6);
+  }
   &.active .show-front {
     transform: rotateY(0);
   }
   &.active .show-back {
     transform: rotateY(180deg);
+  }
+  &.active .card-front::before {
+    position: absolute;
+    top: 23rem;
+    left: 5rem;
+    content: "";
+    display: block;
+    width: 60px;
+    height: 100%;
+    transform: skewX(-40deg);
+    background-color: rgba(255, 255, 255, 0.6);
+    filter: blur(3rem);
+  }
+  &.active .card-front:hover {
+    color: #fff;
+  }
+  &.active .card-front:hover::before {
+    top: -8rem;
+    transition: all 0.3s ease-in;
   }
 
   @media screen and (max-width: 768px) {
@@ -94,8 +116,16 @@ const CardFront = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #3bd6ff;
+  background: rgb(32, 83, 134);
+  background: linear-gradient(
+    330deg,
+    rgba(32, 83, 134, 1) 0%,
+    rgba(50, 102, 157, 1) 25%,
+    rgba(59, 127, 194, 1) 40%,
+    rgba(59, 214, 254, 1) 100%
+  );
   padding: 1rem;
+  overflow: hidden;
 
   .player-number {
     font-weight: 900;
@@ -105,13 +135,12 @@ const CardFront = styled.section`
 `;
 
 const CardBack = styled(CardFront)`
-  background-color: #fff;
+  background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
   transform: rotateY(180deg);
   color: #333;
   padding: 0;
   padding-top: 2rem;
   justify-content: space-between;
-  overflow: hidden;
 
   .player-back-title {
     text-align: center;

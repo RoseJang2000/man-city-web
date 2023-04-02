@@ -8,7 +8,7 @@
         "name": "Norway",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/M0q6SCLIMN.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Julian Alvarez",
@@ -18,7 +18,7 @@
         "name": "Argentina",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/F7MwfTQuT2.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Riyad Mahrez",
@@ -28,7 +28,7 @@
         "name": "Algeria",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/eiKJ14xO4Y.png"
       },
-      "onLoan": false
+      "onLoan": null
     }
   ],
   "midfielders": [
@@ -40,7 +40,7 @@
         "name": "England",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Ilkay Gundogan",
@@ -50,7 +50,7 @@
         "name": "Germany",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/JSfGZNstUI.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Jack Grealish",
@@ -60,7 +60,7 @@
         "name": "England",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Rodrigo",
@@ -70,7 +70,7 @@
         "name": "Spain",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/D92Hd0lxCk.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Kevin De Bruyne",
@@ -80,7 +80,7 @@
         "name": "Belgium",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/sljNmqWWg8.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Bernardo Silva",
@@ -90,7 +90,7 @@
         "name": "Portugal",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/jPGu2XC7s0.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Maximo Perrone",
@@ -100,7 +100,7 @@
         "name": "Argentina",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/F7MwfTQuT2.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Phil Foden",
@@ -110,7 +110,7 @@
         "name": "England",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Cole Palmer",
@@ -120,7 +120,7 @@
         "name": "England",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
       },
-      "onLoan": false
+      "onLoan": null
     }
   ],
   "defenders": [
@@ -132,7 +132,7 @@
         "name": "England",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Ruben Dias",
@@ -142,7 +142,7 @@
         "name": "Portugal",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/jPGu2XC7s0.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "John Stones",
@@ -152,7 +152,7 @@
         "name": "England",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Nathan Ake",
@@ -162,7 +162,7 @@
         "name": "Netherland",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/xFTdpbIi6U.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Joao Cancelo",
@@ -172,7 +172,7 @@
         "name": "Portugal",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/jPGu2XC7s0.png"
       },
-      "onLoan": true
+      "onLoan": "Bayern Munich"
     },
     {
       "name": "Aymeric Laporte",
@@ -182,7 +182,7 @@
         "name": "Spain",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/D92Hd0lxCk.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Sergio Gomez",
@@ -192,7 +192,7 @@
         "name": "Spain",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/D92Hd0lxCk.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Manuel Akanji",
@@ -202,7 +202,7 @@
         "name": "Switzerland",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/VMbZAmgEFB.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Rico Lewis",
@@ -212,7 +212,7 @@
         "name": "England",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Josh Wilson-Esbrand",
@@ -222,7 +222,7 @@
         "name": "England",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
       },
-      "onLoan": true
+      "onLoan": "Coventry City FC"
     }
   ],
   "goalkeepers": [
@@ -234,7 +234,7 @@
         "name": "United States",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/vtCcl63Vhg.png"
       },
-      "onLoan": true
+      "onLoan": "Middlesbrough FC"
     },
     {
       "name": "Stefan Ortega",
@@ -244,7 +244,7 @@
         "name": "Germany",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/JSfGZNstUI.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Ederson",
@@ -254,7 +254,7 @@
         "name": "Brasil",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/PI0YRH9HMd.png"
       },
-      "onLoan": false
+      "onLoan": null
     },
     {
       "name": "Scott Carson",
@@ -264,7 +264,7 @@
         "name": "England",
         "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
       },
-      "onLoan": false
+      "onLoan": null
     }
   ]
 }

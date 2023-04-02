@@ -71,6 +71,7 @@ const Wrapper = styled.section`
   width: 75%;
   border: 1px solid #fff;
   padding: 2rem;
+  gap: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,9 +81,7 @@ const Wrapper = styled.section`
   cursor: default;
 
   .title {
-    position: absolute;
     top: -1.5rem;
-    background-color: #001838;
     padding: 0 1rem;
     font-size: 2rem;
   }

@@ -15,6 +15,7 @@ const Home = () => {
 const HomeContainer = styled(Main)`
   overflow: hidden;
   gap: 5rem;
+  padding-top: 5rem;
   @media screen and (max-width: 576px) {
     gap: 2rem;
   }

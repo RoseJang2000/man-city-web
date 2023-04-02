@@ -4,8 +4,9 @@ import { Main } from "styles/Main";
 import playerList from "assets/playerList.json";
 import { useEffect, useState } from "react";
 import { useWindowWidth } from "hooks/useWindowWidth";
+import PlayerCard from "components/Players/PlayerCard";
 
-interface Player {
+export interface Player {
   name: string;
   number: number;
   profileImg: string;
@@ -117,20 +118,12 @@ const Players = () => {
           {playersDataForSlide.map((player, index) => (
             <PlayerCard
               key={`${position}${index}`}
-              className={activeIdx === index ? "active" : undefined}
-              onClick={handleToggleFlip}
-            >
-              <section
-                className={!isCardFlip ? "inner show-front" : "inner show-back"}
-              >
-                <div className="front">
-                  <h1 className="player-number">{player.number}</h1>
-                </div>
-                <div className="back">
-                  <h1 className="player-name">{player.name}</h1>
-                </div>
-              </section>
-            </PlayerCard>
+              player={player}
+              activeIdx={activeIdx}
+              handleToggleFlip={handleToggleFlip}
+              isCardFlip={isCardFlip}
+              index={index}
+            />
           ))}
         </div>
       </CardWrapper>
@@ -179,67 +172,6 @@ const CardWrapper = styled.section`
 
   @media screen and (max-width: 768px) {
     width: 15rem;
-  }
-`;
-
-const PlayerCard = styled.article`
-  width: 18rem;
-  height: 22rem;
-  opacity: 0.3;
-  cursor: default;
-  padding: 1rem;
-
-  .inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition: all 0.3s;
-    transform-style: preserve-3d;
-  }
-  .front,
-  .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 1rem;
-    border: 1.5px solid #1475ad;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .front {
-    background-color: #3bd6ff;
-    padding: 1rem;
-  }
-  .back {
-    background-color: #fff;
-    transform: rotateY(180deg);
-  }
-  .player-number {
-    font-weight: 900;
-    font-size: 10rem;
-    align-self: flex-end;
-  }
-  .player-name {
-    color: #333;
-  }
-  &.active {
-    padding: 0;
-    opacity: 1;
-    cursor: pointer;
-  }
-  &.active .show-front {
-    transform: rotateY(0);
-  }
-  &.active .show-back {
-    transform: rotateY(180deg);
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 15rem;
-    height: 18rem;
   }
 `;
 

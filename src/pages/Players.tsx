@@ -29,7 +29,7 @@ const Players = () => {
     ...playersData.slice(0, 2),
   ];
   const dataCount: number = playersDataForSlide.length;
-  const [isCardFlip, setIsCardFlip] = useState<boolean>(false);
+  const [isCardFlip, setIsCardFlip] = useState<boolean>(true);
   const [activeIdx, setActiveIdx] = useState<number>(2);
   const [showIdx, setShowIdx] = useState<number>(1);
   const [slideTransition, setSlidetransition] = useState<string>("");
@@ -89,7 +89,7 @@ const Players = () => {
 
   useEffect(() => {
     setSlidetransition("");
-    setIsCardFlip(false);
+    setIsCardFlip(true);
     setShowIdx(1);
     setActiveIdx(2);
   }, [position]);

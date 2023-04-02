@@ -21,11 +21,11 @@ const PlayerCard = ({
       className={activeIdx === index ? "active" : undefined}
       onClick={handleToggleFlip}
     >
-      <section className={!isCardFlip ? "inner show-front" : "inner show-back"}>
-        <div className="front">
+      <div className={!isCardFlip ? "inner show-front" : "inner show-back"}>
+        <CardFront>
           <h1 className="player-number">{player.number}</h1>
-        </div>
-        <div className="back">
+        </CardFront>
+        <CardBack>
           <h1 className="player-name">{player.name}</h1>
           <img src={player.profileImg} alt={player.name} />
           <img
@@ -37,8 +37,8 @@ const PlayerCard = ({
           {player.onLoan && (
             <p className="player-on-loan">on Loan to {player.onLoan}</p>
           )}
-        </div>
-      </section>
+        </CardBack>
+      </div>
     </CardWrapper>
   );
 };
@@ -57,33 +57,6 @@ const CardWrapper = styled.article`
     transition: all 0.3s;
     transform-style: preserve-3d;
   }
-  .front,
-  .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 1rem;
-    border: 1.5px solid #1475ad;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .front {
-    background-color: #3bd6ff;
-    padding: 1rem;
-  }
-  .back {
-    background-color: #fff;
-    transform: rotateY(180deg);
-    color: #333;
-  }
-  .player-number {
-    font-weight: 900;
-    font-size: 10rem;
-    align-self: flex-end;
-  }
   &.active {
     padding: 0;
     opacity: 1;
@@ -100,6 +73,32 @@ const CardWrapper = styled.article`
     width: 15rem;
     height: 18rem;
   }
+`;
+
+const CardFront = styled.section`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  border: 1.5px solid #1475ad;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #3bd6ff;
+  padding: 1rem;
+  .player-number {
+    font-weight: 900;
+    font-size: 10rem;
+    align-self: flex-end;
+  }
+`;
+
+const CardBack = styled(CardFront)`
+  background-color: #fff;
+  transform: rotateY(180deg);
+  color: #333;
 `;
 
 export default PlayerCard;

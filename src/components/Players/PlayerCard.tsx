@@ -19,7 +19,7 @@ const PlayerCard = ({
   return (
     <CardWrapper
       className={activeIdx === index ? "active" : undefined}
-      onClick={handleToggleFlip}
+      onClick={activeIdx === index ? handleToggleFlip : undefined}
     >
       <div className={!isCardFlip ? "inner show-front" : "inner show-back"}>
         <CardFront>

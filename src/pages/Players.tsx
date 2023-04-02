@@ -2,7 +2,8 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Main } from "styles/Main";
 import playerList from "assets/playerList.json";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useWindowWidth } from "hooks/useWindowWidth";
 
 interface Player {
   name: string;
@@ -17,6 +18,7 @@ interface Player {
 
 const Players = () => {
   const { position } = useParams();
+  const windowWidth = useWindowWidth();
   const playersData: Player[] = playerList[position as keyof object];
   const playersCount: number = playersData.length;
   const transitionTime: number = 300;
@@ -30,6 +32,21 @@ const Players = () => {
   const [activeIdx, setActiveIdx] = useState<number>(2);
   const [showIdx, setShowIdx] = useState<number>(1);
   const [slideTransition, setSlidetransition] = useState<string>("");
+
+  const handleResponsiveCardWidth = () => {
+    if (windowWidth <= 768) {
+      return 15;
+    }
+    return 18;
+  };
+
+  const [cardWidth, setCardWidth] = useState<number>(
+    handleResponsiveCardWidth()
+  );
+
+  const handleResize = () => {
+    setCardWidth(handleResponsiveCardWidth());
+  };
 
   const handleToggleFlip = () => {
     console.log(!isCardFlip, activeIdx);
@@ -76,6 +93,11 @@ const Players = () => {
     setActiveIdx(2);
   }, [position]);
 
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return window.addEventListener("resize", handleResize);
+  }, [windowWidth]);
+
   return (
     <PlayersContainer>
       <div className="title">
@@ -86,7 +108,9 @@ const Players = () => {
         <div
           className="flex-box"
           style={{
-            transform: `translateX(-${18 * activeIdx + 14 * activeIdx}rem)`,
+            transform: `translateX(-${
+              cardWidth * activeIdx + 14 * activeIdx
+            }rem)`,
             transition: slideTransition,
           }}
         >
@@ -138,6 +162,10 @@ const PlayersContainer = styled(Main)`
     text-transform: uppercase;
     margin-bottom: 1rem;
   }
+
+  @media screen and (max-width: 768px) {
+    gap: 2rem;
+  }
 `;
 
 const CardWrapper = styled.section`
@@ -147,6 +175,10 @@ const CardWrapper = styled.section`
     width: fit-content;
     display: flex;
     gap: 14rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 15rem;
   }
 `;
 
@@ -204,6 +236,11 @@ const PlayerCard = styled.article`
   &.active .show-back {
     transform: rotateY(180deg);
   }
+
+  @media screen and (max-width: 768px) {
+    width: 15rem;
+    height: 18rem;
+  }
 `;
 
 const ArrowButton = styled.div<{ isPrev: boolean }>`
@@ -216,6 +253,7 @@ const ArrowButton = styled.div<{ isPrev: boolean }>`
   align-items: center;
   text-align: ${(props) => (props.isPrev ? "left" : "right")};
   cursor: pointer;
+  transition: 0.5s;
 
   span {
     font: 1rem;
@@ -256,6 +294,12 @@ const ArrowButton = styled.div<{ isPrev: boolean }>`
     ::after {
       transform: rotate(${(props) => (props.isPrev ? "30deg" : "-30deg")});
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    top: auto;
+    bottom: 0;
+    transform: translate(${(props) => (props.isPrev ? "-4rem" : "4rem")}, -50%);
   }
 `;
 

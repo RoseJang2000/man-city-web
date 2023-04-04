@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import NavMenu from "containers/NavMenu";
 
 const Header = () => {
-  const path = useLocation();
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [aniMode, setAniMode] = useState<boolean>(false);
+  const [titleText, setTitleText] = useState<string>("");
 
   const handleToggleMenu = () => {
     if (!isMenuOpen) {
@@ -24,20 +25,21 @@ const Header = () => {
 
   useEffect(() => {
     handleCloseMenu();
-  }, [path]);
+    setTitleText(location.pathname.split("/").slice(-1)[0]);
+  }, [location]);
+
   return (
-    <>
+    <HeaderContainer>
       {isMenuOpen && <NavMenu aniMode={aniMode} />}
-      <HeaderContainer>
-        <MenuButton onClick={handleToggleMenu}>
-          <div className={`menu-trigger ${isMenuOpen ? "active" : null}`}>
-            <span className="line line-1"></span>
-            <span className="line line-2"></span>
-            <span className="line line-3"></span>
-          </div>
-        </MenuButton>
-      </HeaderContainer>
-    </>
+      <MenuButton onClick={handleToggleMenu}>
+        <div className={`menu-trigger ${isMenuOpen ? "active" : null}`}>
+          <span className="line line-1"></span>
+          <span className="line line-2"></span>
+          <span className="line line-3"></span>
+        </div>
+      </MenuButton>
+      <h1>{titleText[0].toLocaleUpperCase() + titleText.slice(1)}</h1>
+    </HeaderContainer>
   );
 };
 
@@ -49,6 +51,9 @@ const HeaderContainer = styled.header`
   top: 0;
   left: 0;
   background-color: #001838;
+  display: flex;
+  align-items: center;
+  padding-left: 6rem;
 `;
 
 const MenuButton = styled.div`
@@ -58,7 +63,7 @@ const MenuButton = styled.div`
   top: 50%;
   left: 1.5rem;
   cursor: pointer;
-  z-index: 20;
+  z-index: 999;
   transform: translateY(-50%);
 
   .menu-trigger {

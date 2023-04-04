@@ -38,7 +38,7 @@ const Header = () => {
           <span className="line line-3"></span>
         </div>
       </MenuButton>
-      <h1>{titleText[0].toLocaleUpperCase() + titleText.slice(1)}</h1>
+      {titleText.length !== 0 && <h1 className="header-title">{titleText}</h1>}
     </HeaderContainer>
   );
 };
@@ -54,6 +54,9 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   padding-left: 6rem;
+  .header-title {
+    text-transform: uppercase;
+  }
 `;
 
 const MenuButton = styled.div`

@@ -13,6 +13,14 @@ const GlobalStyle = createGlobalStyle`
     background-color: #001838;
     color: #fff;
   }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style:none;
+  }
 `;
 
 export default GlobalStyle;

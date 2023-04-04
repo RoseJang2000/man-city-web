@@ -1,4 +1,5 @@
-import Home from './Home';
-import Players from './Players';
+import Home from "./Home";
+import Players from "./Players";
+import News from "./News";
 
-export { Home, Players };
+export { Home, Players, News };

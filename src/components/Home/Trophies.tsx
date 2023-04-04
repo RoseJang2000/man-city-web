@@ -71,7 +71,6 @@ const Wrapper = styled.section`
   width: 75%;
   border: 1px solid #fff;
   padding: 2rem;
-  gap: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,8 +81,10 @@ const Wrapper = styled.section`
 
   .title {
     top: -1.5rem;
+    position: absolute;
     padding: 0 1rem;
     font-size: 2rem;
+    background-color: #001838;
   }
   .articles {
     width: 100%;

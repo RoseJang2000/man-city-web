@@ -1,5 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import { Home, Players } from "pages";
+import { Home, News, Players } from "pages";
 import GlobalStyle from "styles/GlobalStyle";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
@@ -42,6 +42,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/players/:position" element={<Players />} />
+        <Route path="/news" element={<News />} />
       </Routes>
     </>
   );

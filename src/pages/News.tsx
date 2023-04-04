@@ -1,4 +1,6 @@
 import axios from "axios";
+import Loader from "components/Loader";
+import NewsArticle from "components/News/NewsArticle";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Main } from "styles/Main";
@@ -10,10 +12,10 @@ interface ReqParams {
   dateRestrict?: string;
   hq?: string;
   start: number;
-  sort: string;
+  sort?: string;
 }
 
-interface ReqNewsData {
+export interface ReqNewsData {
   cacheId: string;
   displayLink: string;
   formattedUrl: string;
@@ -36,7 +38,7 @@ interface ReqNewsData {
 const News = () => {
   const [contentCount, setContentCount] = useState<number>(1);
   const [isLastPage, setIsLastPage] = useState<boolean>(false);
-  const [newsData, setNewsData] = useState<ReqNewsData[]>();
+  const [newsData, setNewsData] = useState<ReqNewsData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getNewsData = async () => {
@@ -48,15 +50,13 @@ const News = () => {
       dateRestrict: "w2",
       hq: "맨체스터 시티",
       start: contentCount,
-      sort: "date",
     };
     await axios
       .get("https://www.googleapis.com/customsearch/v1", {
         params,
       })
       .then((res) => {
-        console.log(res.data.items);
-        setNewsData(res.data.items);
+        setNewsData((cur) => [...cur, ...res.data.items]);
         setIsLoading(false);
         if (
           contentCount + 10 >=
@@ -67,25 +67,33 @@ const News = () => {
       });
   };
 
+  const handleMoreData = () => {
+    setContentCount((cur) => cur + 10);
+  };
+
   useEffect(() => {
     getNewsData();
-  }, []);
+  }, [contentCount]);
 
   return (
     <NewsContainer>
-      <h1>News</h1>
+      <h1 className="news-title">
+        최근 2주 동안의 맨체스터 시티 관련 기사들을 살펴보세요!
+      </h1>
       <NewsListWrapper>
-        {newsData &&
+        {newsData.length !== 0 &&
           newsData.map((news) => (
-            <NewsArticle key={news.cacheId}>
-              <img
-                src={news.pagemap.cse_image[0].src}
-                className="news-thumbnail"
-                alt="thumbnail"
-              />
-              <h1>{news.title}</h1>
-            </NewsArticle>
+            <NewsArticle key={news.cacheId} news={news} />
           ))}
+        {!isLastPage ? (
+          isLoading ? (
+            <Loader />
+          ) : (
+            <MoreButton onClick={handleMoreData}>MORE ...</MoreButton>
+          )
+        ) : (
+          <div>This is last content!</div>
+        )}
       </NewsListWrapper>
     </NewsContainer>
   );
@@ -93,29 +101,51 @@ const News = () => {
 
 const NewsContainer = styled(Main)`
   justify-content: flex-start;
-  padding: 5rem 6rem;
+  padding: 5rem 3rem;
+
+  .news-title {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+  }
+  @media screen and (max-width: 576px) {
+    padding: 5rem 0.5rem;
+  }
 `;
 
 const NewsListWrapper = styled.section`
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
+  transition: 0.3s;
+  padding: 3rem 0;
+
+  @media screen and (max-width: 1280px) {
+    width: 100%;
+  }
 `;
 
-const NewsArticle = styled.article`
+const MoreButton = styled.div`
   width: 100%;
-  height: 10rem;
-  background-color: #fff;
+  height: 5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
   color: #333;
   display: flex;
-  padding: 1rem;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
 
-  .news-thumbnail {
-    height: 100%;
-    width: 25%;
-    object-fit: cover;
+  :hover {
+    filter: brightness(0.8);
+    color: #fff;
+    transition: 0.3s;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
   }
 `;
 

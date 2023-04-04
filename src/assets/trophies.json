@@ -1,0 +1,22 @@
+[
+  {
+    "cupName": "Premier League",
+    "winningCount": 8,
+    "winningSeason": "1936-37, 1967-68, 2011-12, 2013-14, 2017-18, 2018-19, 2020-21, 2021-22"
+  },
+  {
+    "cupName": "FA Cup",
+    "winningCount": 6,
+    "winningSeason": "1903-04, 1933-34, 1955-56, 1968-69, 2010-11, 2018-19"
+  },
+  {
+    "cupName": "Carabao Cup",
+    "winningCount": 8,
+    "winningSeason": "1969-70, 1975-76, 2013-14, 2015-16, 2017-18, 2018-19, 2019-20, 2020-21"
+  },
+  {
+    "cupName": "Community Shield",
+    "winningCount": 6,
+    "winningSeason": "1937, 1968, 1972, 2012, 2018, 2019"
+  }
+]

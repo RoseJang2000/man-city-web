@@ -1,0 +1,270 @@
+{
+  "forwards": [
+    {
+      "name": "Erling Haaland",
+      "number": 9,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/mCenwSY6sE.png",
+      "country": {
+        "name": "Norway",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/M0q6SCLIMN.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Julian Alvarez",
+      "number": 19,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/0wmWoBTh6p.png",
+      "country": {
+        "name": "Argentina",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/F7MwfTQuT2.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Riyad Mahrez",
+      "number": 26,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/cVQ1b4N5C5.png",
+      "country": {
+        "name": "Algeria",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/eiKJ14xO4Y.png"
+      },
+      "onLoan": null
+    }
+  ],
+  "midfielders": [
+    {
+      "name": "Kalvin Phillips",
+      "number": 4,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/t7TTy6LL5z.png",
+      "country": {
+        "name": "England",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Ilkay Gundogan",
+      "number": 8,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/H0wyvM5etT.png",
+      "country": {
+        "name": "Germany",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/JSfGZNstUI.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Jack Grealish",
+      "number": 10,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/Niaq9Gvg7j.png",
+      "country": {
+        "name": "England",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Rodrigo",
+      "number": 16,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/6diEatp4DA.png",
+      "country": {
+        "name": "Spain",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/D92Hd0lxCk.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Kevin De Bruyne",
+      "number": 17,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/gyMmJW6CG7.png",
+      "country": {
+        "name": "Belgium",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/sljNmqWWg8.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Bernardo Silva",
+      "number": 20,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/4fqVkaaUhw.png",
+      "country": {
+        "name": "Portugal",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/jPGu2XC7s0.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Maximo Perrone",
+      "number": 32,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/BaK0XzKsVM.png",
+      "country": {
+        "name": "Argentina",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/F7MwfTQuT2.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Phil Foden",
+      "number": 47,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/S4WsQlFGNX.png",
+      "country": {
+        "name": "England",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Cole Palmer",
+      "number": 80,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/qX5azpjM5n.png",
+      "country": {
+        "name": "England",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
+      },
+      "onLoan": null
+    }
+  ],
+  "defenders": [
+    {
+      "name": "Kyle Walker",
+      "number": 2,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/dK5RVs2qWW.png",
+      "country": {
+        "name": "England",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Ruben Dias",
+      "number": 3,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/Ztd5OVsnOm.png",
+      "country": {
+        "name": "Portugal",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/jPGu2XC7s0.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "John Stones",
+      "number": 5,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/2Sl9xE91xD.png",
+      "country": {
+        "name": "England",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Nathan Ake",
+      "number": 6,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/KIPBtycdto.png",
+      "country": {
+        "name": "Netherland",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/xFTdpbIi6U.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Joao Cancelo",
+      "number": 7,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/Qqtj8kCf74.png",
+      "country": {
+        "name": "Portugal",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/jPGu2XC7s0.png"
+      },
+      "onLoan": "Bayern Munich"
+    },
+    {
+      "name": "Aymeric Laporte",
+      "number": 14,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/oPCSEoH3EP.png",
+      "country": {
+        "name": "Spain",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/D92Hd0lxCk.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Sergio Gomez",
+      "number": 21,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/kFZxIRlBHf.png",
+      "country": {
+        "name": "Spain",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/D92Hd0lxCk.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Manuel Akanji",
+      "number": 25,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/y9zpjAgTiH.png",
+      "country": {
+        "name": "Switzerland",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/VMbZAmgEFB.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Rico Lewis",
+      "number": 82,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/aM8DW3VrVc.png",
+      "country": {
+        "name": "England",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Josh Wilson-Esbrand",
+      "number": 97,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/WlGlPgQFNs.png",
+      "country": {
+        "name": "England",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
+      },
+      "onLoan": "Coventry City FC"
+    }
+  ],
+  "goalkeepers": [
+    {
+      "name": "Zack Steffen",
+      "number": 13,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/YKttKgzDGQ.png",
+      "country": {
+        "name": "United States",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/vtCcl63Vhg.png"
+      },
+      "onLoan": "Middlesbrough FC"
+    },
+    {
+      "name": "Stefan Ortega",
+      "number": 18,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/rCp8DeS2E6.png",
+      "country": {
+        "name": "Germany",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/JSfGZNstUI.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Ederson",
+      "number": 31,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/nwJAHMNAHv.png",
+      "country": {
+        "name": "Brasil",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/PI0YRH9HMd.png"
+      },
+      "onLoan": null
+    },
+    {
+      "name": "Scott Carson",
+      "number": 33,
+      "profileImg": "https://i.esdrop.com/d/f/XWTMtUmtv1/LVWiiFzSjL.png",
+      "country": {
+        "name": "England",
+        "flag": "https://i.esdrop.com/d/f/XWTMtUmtv1/8q9M0udN4t.png"
+      },
+      "onLoan": null
+    }
+  ]
+}

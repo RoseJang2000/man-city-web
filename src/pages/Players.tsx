@@ -50,7 +50,6 @@ const Players = () => {
   };
 
   const handleToggleFlip = () => {
-    console.log(!isCardFlip, activeIdx);
     setIsCardFlip(!isCardFlip);
   };
 
@@ -102,7 +101,6 @@ const Players = () => {
   return (
     <PlayersContainer>
       <div className="title">
-        <h1 className="title-position">{position}</h1>
         <h2 className="title-count">{`${showIdx} / ${playersCount}`}</h2>
       </div>
       <CardWrapper>

@@ -97,6 +97,7 @@ const NavContainer = styled.nav<{ aniMode: boolean; width: number }>`
   top: 0;
   left: 0;
   z-index: 3;
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.3);
   animation: ${(props) =>
     props.aniMode
       ? css`

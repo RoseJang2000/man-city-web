@@ -13,7 +13,13 @@ const NewsArticle = ({ news }: NewsArticleProps) => {
         className="news-thumbnail"
         alt="thumbnail"
       />
-      <h1 className="news-title">{news.title}</h1>
+      <div className="news-content">
+        <h1 className="news-content-title">{news.title}</h1>
+        <p className="news-content-desc">
+          {news.snippet.split(" ...").slice(1)[0]}
+        </p>
+        <p className="news-content-date">{news.snippet.split("...")[0]}</p>
+      </div>
     </NewsArticleWrapper>
   );
 };
@@ -33,7 +39,22 @@ const NewsArticleWrapper = styled.article`
     width: 25%;
     object-fit: cover;
   }
-  :hover .news-title {
+  .news-content {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .news-content-title,
+  .news-content-desc {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  :hover .news-content-title {
     text-decoration: underline;
   }
 `;

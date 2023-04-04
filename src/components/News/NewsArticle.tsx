@@ -6,8 +6,11 @@ interface NewsArticleProps {
 }
 
 const NewsArticle = ({ news }: NewsArticleProps) => {
+  const handleClickNews = (link: string) => {
+    window.open(link);
+  };
   return (
-    <NewsArticleWrapper>
+    <NewsArticleWrapper onClick={() => handleClickNews(news.link)}>
       <img
         src={news.pagemap.cse_image[0].src}
         className="news-thumbnail"
@@ -16,7 +19,7 @@ const NewsArticle = ({ news }: NewsArticleProps) => {
       <div className="news-content">
         <h1 className="news-content-title">{news.title}</h1>
         <p className="news-content-desc">
-          {news.snippet.split(" ...").slice(1)[0]}
+          {news.snippet.split(" ...").slice(1).join("")}
         </p>
         <p className="news-content-date">{news.snippet.split("...")[0]}</p>
       </div>

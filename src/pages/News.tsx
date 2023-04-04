@@ -1,4 +1,5 @@
 import axios from "axios";
+import Loader from "components/Loader";
 import NewsArticle from "components/News/NewsArticle";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -85,7 +86,11 @@ const News = () => {
             <NewsArticle key={news.cacheId} news={news} />
           ))}
         {!isLastPage ? (
-          <MoreButton onClick={handleMoreData}>MORE ...</MoreButton>
+          isLoading ? (
+            <Loader />
+          ) : (
+            <MoreButton onClick={handleMoreData}>MORE ...</MoreButton>
+          )
         ) : (
           <div>This is last content!</div>
         )}

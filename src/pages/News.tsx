@@ -50,14 +50,12 @@ const News = () => {
       dateRestrict: "w2",
       hq: "맨체스터 시티",
       start: contentCount,
-      // sort: "date",
     };
     await axios
       .get("https://www.googleapis.com/customsearch/v1", {
         params,
       })
       .then((res) => {
-        console.log(res);
         setNewsData((cur) => [...cur, ...res.data.items]);
         setIsLoading(false);
         if (
@@ -79,7 +77,9 @@ const News = () => {
 
   return (
     <NewsContainer>
-      <h1>최근 2주 동안의 맨체스터 시티 관련 기사들을 살펴보세요!</h1>
+      <h1 className="news-title">
+        최근 2주 동안의 맨체스터 시티 관련 기사들을 살펴보세요!
+      </h1>
       <NewsListWrapper>
         {newsData.length !== 0 &&
           newsData.map((news) => (
@@ -101,6 +101,15 @@ const News = () => {
 
 const NewsContainer = styled(Main)`
   justify-content: flex-start;
+  padding: 5rem 3rem;
+
+  .news-title {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+  }
+  @media screen and (max-width: 576px) {
+    padding: 5rem 0.5rem;
+  }
 `;
 
 const NewsListWrapper = styled.section`
@@ -109,7 +118,12 @@ const NewsListWrapper = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 3rem;
+  transition: 0.3s;
+  padding: 3rem 0;
+
+  @media screen and (max-width: 1280px) {
+    width: 100%;
+  }
 `;
 
 const MoreButton = styled.div`

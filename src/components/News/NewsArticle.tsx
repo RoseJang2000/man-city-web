@@ -11,11 +11,13 @@ const NewsArticle = ({ news }: NewsArticleProps) => {
   };
   return (
     <NewsArticleWrapper onClick={() => handleClickNews(news.link)}>
-      <img
-        src={news.pagemap.cse_image[0].src}
-        className="news-thumbnail"
-        alt="thumbnail"
-      />
+      <div className="news-thumbnail-wrapper">
+        <img
+          src={news.pagemap.cse_image[0].src}
+          className="news-thumbnail-img"
+          alt="thumbnail"
+        />
+      </div>
       <div className="news-content">
         <h1 className="news-content-title">{news.title}</h1>
         <p className="news-content-desc">
@@ -30,17 +32,25 @@ const NewsArticle = ({ news }: NewsArticleProps) => {
 const NewsArticleWrapper = styled.article`
   width: 100%;
   height: 10rem;
-  background-color: #ffffffb5;
+  background-color: rgba(255, 255, 255, 0.5);
   color: #333;
   display: flex;
   padding: 1rem;
   gap: 1rem;
+  border-radius: 1rem;
   cursor: pointer;
+  transition: 0.3s;
 
-  .news-thumbnail {
+  .news-thumbnail-wrapper {
     height: 100%;
     width: 25%;
+    overflow: hidden;
+  }
+  .news-thumbnail-img {
+    height: 100%;
+    width: 100%;
     object-fit: cover;
+    transition: 0.3s;
   }
   .news-content {
     width: 70%;
@@ -57,8 +67,16 @@ const NewsArticleWrapper = styled.article`
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
-  :hover .news-content-title {
-    text-decoration: underline;
+  :hover {
+    filter: brightness(0.7);
+    color: #fff;
+    .news-thumbnail-img {
+      transform: scale(1.1);
+      transition: 0.3s;
+    }
+    .news-content-title {
+      text-decoration: underline;
+    }
   }
 `;
 

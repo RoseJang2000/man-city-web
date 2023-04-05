@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Home, News, Players } from "pages";
 import GlobalStyle from "styles/GlobalStyle";
-
 import Header from "containers/Header";
 
 const App = () => {

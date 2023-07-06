@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Main } from "styles/Main";
 import playerList from "assets/playerList.json";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useWindowWidth } from "hooks/useWindowWidth";
 import PlayerCard from "components/Players/PlayerCard";
 
@@ -34,20 +34,16 @@ const Players = () => {
   const [showIdx, setShowIdx] = useState<number>(1);
   const [slideTransition, setSlidetransition] = useState<string>("");
 
-  const handleResponsiveCardWidth = () => {
+  const handleResponsiveCardWidth = useCallback(() => {
     if (windowWidth <= 768) {
       return 15;
     }
     return 18;
-  };
+  }, [windowWidth]);
 
   const [cardWidth, setCardWidth] = useState<number>(
     handleResponsiveCardWidth()
   );
-
-  const handleResize = () => {
-    setCardWidth(handleResponsiveCardWidth());
-  };
 
   const handleToggleFlip = () => {
     setIsCardFlip(!isCardFlip);
@@ -94,9 +90,13 @@ const Players = () => {
   }, [position]);
 
   useEffect(() => {
+    const handleResize = () => {
+      setCardWidth(handleResponsiveCardWidth());
+    };
+
     window.addEventListener("resize", handleResize);
     return window.addEventListener("resize", handleResize);
-  }, [windowWidth]);
+  }, [windowWidth, handleResponsiveCardWidth]);
 
   return (
     <PlayersContainer>

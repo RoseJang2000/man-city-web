@@ -191,20 +191,19 @@ const TrophieArticle = styled.article`
 const SlideIn = keyframes`
   from {
     opacity:0;
-    bottom: -5rem;
+    bottom: -2rem;
   }
   to {
     opacity: 1;
-    bottom: -6rem;
+    bottom: -1rem;
   }
 `;
 
 const SeasonBubble = styled.div`
   width: 100%;
-  height: 5rem;
   position: absolute;
   left: 0;
-  bottom: -6rem;
+  bottom: -1rem;
   border-radius: 0.5rem;
   background-color: #3bd7fe;
   color: #333;

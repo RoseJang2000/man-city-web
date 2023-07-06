@@ -25,6 +25,7 @@ const HomeTitleWrapper = styled.section`
   overflow: hidden;
   position: relative;
   width: 38rem;
+  min-height: 4rem;
 
   .text-head {
     font-weight: 800;
@@ -37,6 +38,7 @@ const HomeTitleWrapper = styled.section`
   @media screen and (max-width: 576px) {
     width: 18rem;
     font-size: 1.6rem;
+    min-height: 2.5rem;
   }
 `;
 

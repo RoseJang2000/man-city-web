@@ -5,6 +5,7 @@ import PremierLeague from "assets/icons/premierLeague.svg";
 import FACup from "assets/icons/faCup.svg";
 import CarabaoCup from "assets/icons/leagueCup.svg";
 import CommunityShield from "assets/icons/communityShield.svg";
+import ChampionsLeague from "assets/icons/championsLeague.svg";
 import { useState } from "react";
 
 interface Trophy {
@@ -18,10 +19,18 @@ const Trophies = () => {
   const [isShowBubble, setIsShowBubble] = useState<boolean[]>([]);
 
   const getCupIcon = (cupName: string) => {
-    if (cupName === "Premier League") return PremierLeague;
-    else if (cupName === "FA Cup") return FACup;
-    else if (cupName === "Carabao Cup") return CarabaoCup;
-    else return CommunityShield;
+    switch (cupName) {
+      case "Premier League":
+        return PremierLeague;
+      case "FA Cup":
+        return FACup;
+      case "Carabao Cup":
+        return CarabaoCup;
+      case "Champions League":
+        return ChampionsLeague;
+      default:
+        return CommunityShield;
+    }
   };
 
   const handleMouseEvent = (index: number, type: boolean) => {

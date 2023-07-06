@@ -13,9 +13,11 @@ const Home = () => {
 };
 
 const HomeContainer = styled(Main)`
-  overflow: hidden;
+  overflow: auto;
   gap: 5rem;
-  padding-top: 5rem;
+  justify-content: flex-start;
+  padding: 5rem 0;
+
   @media screen and (max-width: 576px) {
     gap: 2rem;
   }

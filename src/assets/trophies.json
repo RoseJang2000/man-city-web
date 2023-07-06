@@ -1,13 +1,18 @@
 [
   {
+    "cupName": "Champions League",
+    "winningCount": 1,
+    "winningSeason": "2022-23"
+  },
+  {
     "cupName": "Premier League",
-    "winningCount": 8,
-    "winningSeason": "1936-37, 1967-68, 2011-12, 2013-14, 2017-18, 2018-19, 2020-21, 2021-22"
+    "winningCount": 9,
+    "winningSeason": "1936-37, 1967-68, 2011-12, 2013-14, 2017-18, 2018-19, 2020-21, 2021-22, 2022-23"
   },
   {
     "cupName": "FA Cup",
-    "winningCount": 6,
-    "winningSeason": "1903-04, 1933-34, 1955-56, 1968-69, 2010-11, 2018-19"
+    "winningCount": 7,
+    "winningSeason": "1903-04, 1933-34, 1955-56, 1968-69, 2010-11, 2018-19, 2022-23"
   },
   {
     "cupName": "Carabao Cup",

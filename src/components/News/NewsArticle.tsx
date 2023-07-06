@@ -1,5 +1,6 @@
 import { ReqNewsData } from "pages/News";
 import styled from "styled-components";
+import noImage from "assets/images/noImage.jpeg";
 
 interface NewsArticleProps {
   news: ReqNewsData;
@@ -9,13 +10,25 @@ const NewsArticle = ({ news }: NewsArticleProps) => {
   const handleClickNews = (link: string) => {
     window.open(link);
   };
+
+  const handleImgError = (
+    event: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    event.currentTarget.src = noImage;
+  };
+
   return (
     <NewsArticleWrapper onClick={() => handleClickNews(news.link)}>
       <div className="news-thumbnail-wrapper">
         <img
-          src={news.pagemap.cse_image[0].src}
+          src={
+            news.pagemap?.cse_image
+              ? news.pagemap?.cse_image[0].src
+              : "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg"
+          }
           className="news-thumbnail-img"
           alt="thumbnail"
+          onError={handleImgError}
         />
       </div>
       <div className="news-content">
